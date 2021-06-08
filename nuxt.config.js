@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -6,7 +8,7 @@ export default {
   head: {
     title: 'microcms_cdl',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
@@ -39,5 +41,25 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/page/:p',
+        component: resolve(__dirname, 'pages/index.vue'),
+        name: 'page',
+      });
+      routes.push({
+        path: '/category/:categoryId/page/:p',
+        component: resolve(__dirname, 'pages/index.vue'),
+        name: 'category',
+      })
+    },
+  },
+
+  generate: {
+    // nuxt-linkを使っていれば動的なリンクもHTMLファイルを出力してくれるので基本的には不要
+    // どこからもリンクされていないページ（外部サイトからバナーなどでリンクするページなど）を出力する際は指定が必要
+  },
 }
