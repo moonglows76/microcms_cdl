@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mx-auto max-w-xl">
     <p>カテゴリ一覽</p>
     <Categories :categories="categories" />
     <p>記事一覽</p>
