@@ -1,40 +1,17 @@
 <template>
   <div>
     <p>カテゴリ一覽</p>
-    <ul class="category-list">
-      <li>
-        <nuxt-link :to="`/`">
-          ALL
-        </nuxt-link>
-      </li>
-      <li v-for="category in categories" :key="category.id">
-        <nuxt-link :to="`/category/${category.id}/page/1`">
-          {{ category.name }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <Categories :categories="categories" />
     <p>記事一覽</p>
-    <ul>
-      <li v-for="content in contents" :key="content.id">
-        <nuxt-link :to="`/${content.id}`">
-          {{ content.title }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <Articles :contents="contents" />
     <p>ページ送り</p>
-    <ul class="pager">
-      <li v-for="page in pagerMax" :key="page.id">
-        <nuxt-link :to="`${categoryId === undefined ? '' : `/category/${categoryId}`
-        }/page/${page}`">
-          {{ page }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <Pager :max="pagerMax" :category="categoryId"></Pager>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default {
   // paramsはURLにnuxt.config.jsでrouterに指定したパラメーターが入る
   // このサンプルではnuxt.config.jsのrouter :p と :categoryId の2つのパラメーターを指定している
@@ -85,6 +62,12 @@ export default {
       pagerMax: Math.ceil(data.totalCount / limit),
       categories: categories.data.contents
     }
-  }
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
+</style>
