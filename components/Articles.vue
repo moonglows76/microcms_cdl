@@ -12,7 +12,7 @@
 <script>
 export default {
   props: {
-    contents: { type: Object },
+    contents: { type: Array },
   },
 }
 </script>
