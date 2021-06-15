@@ -19,8 +19,8 @@ export default {
     const page = params.p || '1'
     const categoryId = params.categoryId
     const limit = 5
-    console.log(page)
-    console.log(categoryId)
+    // console.log(page)
+    // console.log(categoryId)
 
     // カテゴリ一覽用
     const categories = await axios.get(
