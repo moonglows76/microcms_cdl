@@ -6,6 +6,10 @@
     <Articles :contents="contents" />
     <p>ページ送り</p>
     <Pager :max="pagerMax" :category="categoryId"></Pager>
+    <p>お問い合わせ</p>
+    <p>
+      <nuxt-link to="/contact">お問い合わせ</nuxt-link>
+    </p>
   </div>
 </template>
 
