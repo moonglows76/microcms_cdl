@@ -1,16 +1,12 @@
 <template>
-  <div>
+  <main class="main">
     <p>カテゴリ一覽</p>
     <Categories :categories="categories" />
     <p>記事一覽</p>
     <Articles :contents="contents" />
     <p>ページ送り</p>
     <Pager :max="pagerMax" :category="categoryId"></Pager>
-    <p>お問い合わせ</p>
-    <p>
-      <nuxt-link to="/contact">お問い合わせ</nuxt-link>
-    </p>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -73,5 +69,9 @@ export default {
 <style lang="scss" scoped>
 a {
   text-decoration: none;
+}
+.main {
+  width: 960px;
+  margin: 0 auto;
 }
 </style>
