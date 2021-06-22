@@ -10,12 +10,10 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   // paramsはURLにnuxt.config.jsでrouterに指定したパラメーターが入る
   // このサンプルではnuxt.config.jsのrouter :p と :categoryId の2つのパラメーターを指定している
-  async asyncData({params}) {
+  async asyncData({$axios, params}) {
     const page = params.p || '1'
     const categoryId = params.categoryId
     const limit = 5
@@ -23,7 +21,7 @@ export default {
     // console.log(categoryId)
 
     // カテゴリ一覽用
-    const categories = await axios.get(
+    const categories = await $axios.get(
       `https://cdl2021.microcms.io/api/v1/categories?limit=100`,
       {
         headers: { 'X-API-KEY': 'a6bae4eb-c7cb-498f-b87c-426eb33c9f7b' }
@@ -36,7 +34,7 @@ export default {
     // ${}の中にさらに``を入れることも可能
     // ${}の中の``の中に${}を入れることも可能（入れ子ができるということ）
     // `aaaaa ${ categoryId === undefined : '' : `${}` }`
-    const { data } = await axios.get(
+    const { data } = await $axios.get(
       `https://cdl2021.microcms.io/api/v1/blog?limit=${limit}${
         categoryId === undefined ? '' : `&filters=category[equals]${categoryId}`
       }&offset=${(page - 1) * limit}`,

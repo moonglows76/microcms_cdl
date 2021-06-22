@@ -8,11 +8,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  async asyncData({ params }) {
-    const { data } = await axios.get(
+  async asyncData({ $axios, params }) {
+    const { data } = await $axios.get(
       `https://cdl2021.microcms.io/api/v1/blog/${params.slug}`,
       {
         headers: { 'X-API-KEY': 'a6bae4eb-c7cb-498f-b87c-426eb33c9f7b' }
