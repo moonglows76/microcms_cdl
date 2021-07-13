@@ -46,8 +46,10 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
+  proxy: ['http://localhost:9000/.netlify'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

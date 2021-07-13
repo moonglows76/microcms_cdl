@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "netlify-lambda serve functions/api & nuxt",
-    "build": "netlify-lambda build functions/api && nuxt build",
+    "dev": "nuxt",
+    "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "functions:build": "netlify-lambda build functions",
+    "functions:serve": "netlify-lambda serve functions"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/proxy": "^2.1.0",
     "axios": "^0.21.1",
     "core-js": "^3.8.3",
     "netlify-lambda": "^2.0.11",
